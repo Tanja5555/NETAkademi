@@ -1,0 +1,15 @@
+﻿@using NETAkademi.Models.Blocks
+@model QuoteBlock
+
+
+    <div>
+
+        <img class="teaserPic" src="@Url.ContentUrl(Model.QuoteImage)" />
+
+        <h4 class="teaserHeader">@Model.QuoteHeading</h4>
+
+        <p>@Html.PropertyFor(x => x.QuoteCompany)</p>
+
+        <p @Html.EditAttributes(x => x.QuoteText)>@Model.QuoteText</p>
+    </div>
+

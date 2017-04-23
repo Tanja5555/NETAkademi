@@ -1,0 +1,25 @@
+﻿@* This class using for add a layout page, content type, and template for Product pages  *@
+@{
+    
+    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+}
+
+@{Html.RenderPartial("Breadcrumbs");}
+
+<div class="row">
+    <div class="span8">
+        @RenderBody()
+
+    </div>
+
+    <div class="span4">
+        @if (IsSectionDefined("RelatedContent"))
+        {
+            @RenderSection("RelatedContent")
+        }
+
+    </div>
+
+
+</div>
+

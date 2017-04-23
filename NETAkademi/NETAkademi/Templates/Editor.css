@@ -1,0 +1,32 @@
+﻿/*------------------------------------------------*/
+/*Style tags for TinyMCE*/
+
+h2 {EditMenuName:Header 2;}
+h3 {EditMenuName:Header 3;}
+h4 {EditMenuName:Header 4;}
+h5 {EditMenuName:Header 5;}
+
+p {
+    EditMenuName: Stycke;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+    p.lead {
+        EditMenuName: Lead;
+        font-size: 21px;
+        font-weight: 300;
+        line-height: 1.4;
+    }
+
+.heading1 {
+    EditMenuName: Heading 1;
+    font-size: 16px;
+    font-family: Cambria;
+    text-decoration: underline;
+}
+
+.bodyText1 {
+    EditMenuName: Body Text 1;
+    font-size: 12px;
+    font-family: Cambria;
+}

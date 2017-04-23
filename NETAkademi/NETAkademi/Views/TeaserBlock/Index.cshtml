@@ -1,0 +1,13 @@
+﻿@using NETAkademi.Models.Blocks
+@model TeaserBlock
+
+
+<div>
+    <img class="teaserPic" src="@Url.ContentUrl(Model.TeaserImage)" />
+
+    <h4 class="teaserHeader">@Model.TeaserHeading</h4>
+    
+    <p>@Html.PropertyFor(x => x.TeaserText)</p>
+    <p>@Html.PropertyFor(x => x.TeaserLink)</p>
+    @*<p @Html.EditAttributes(x => x.TeaserCompany)>@Model.TeaserCompany</p>*@
+</div>

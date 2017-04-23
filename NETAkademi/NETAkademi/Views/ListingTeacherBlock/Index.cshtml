@@ -1,0 +1,46 @@
+﻿@model NETAkademi.Models.ViewModels.ListingTeacherBlockModel
+
+
+<div class="container conBody">
+    <div class="page-header">
+        <h1>@Model.Heading</h1>
+    </div>
+    <div class="btn-danger"></div>
+
+    @if (Model.Items != null)
+        {
+            int itemNumber = 0;
+            foreach (var item in Model.Items)
+            {
+            itemNumber++;
+
+            <div class="col-md-10 teachBorder">
+                <div class="col-xs-6 col-md-4">
+                    <a href="#" class="thumbnail">
+                       <img class="imgTeach" src="@Url.ContentUrl(item.TeacherImage)" />
+
+                    </a>
+                </div>
+
+                <div class="col-md-6">
+                    <h4><a href="#">@Html.PageLink(item)</a></h4>
+
+
+                    <br />
+
+                    <h4>Ämne: &nbsp; @item.CourseSubject</h4>
+                    <br />
+
+
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="@("#slider"+itemNumber)")">Biografi</button>
+                    <div id="@("slider"+itemNumber)" class="collapse out">
+                        <h4>@item.Biography</h4>
+                    </div>
+
+                </div>
+                <hr />
+            </div>
+        }
+    }
+
+    </div>

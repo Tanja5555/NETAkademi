@@ -1,0 +1,44 @@
+﻿@using NETAkademi.Models.ViewModels
+@using NETAkademi.Models.Pages
+@model IPageViewModel<SitePageData>
+
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <div class="row">
+            <div class="col-md-3 myfooter">
+                <h3>@Html.Translate("/footer/products")</h3>
+                @Html.PropertyFor(x => x.Layout.ProductPages)
+            </div>
+            <div class="col-md-3 myfooter">
+                <h3>@Html.Translate("/footer/company")</h3>
+                @Html.PropertyFor(x => x.Layout.CompanyInformationPages)
+            </div>
+            <div class="col-md-3 myfooter">
+                <h3>@Html.Translate("/footer/news")</h3>
+                @Html.PropertyFor(x => x.Layout.NewsPages)
+            </div>
+            <div class="col-md-3 myfooter">
+                <h3>@Html.Translate("/footer/customerzone")</h3>
+                @Html.PropertyFor(x => x.Layout.CustomerZonePages)
+                <ul>
+                    <li>
+                        @if (Model.Layout!=null && Model.Layout.LoggedIn)
+                        {
+                            @Html.ActionLink(Html.Translate("/footer/logout"), "Logout")
+                        }
+                        else if (Model.Layout!=null)
+                        {
+                            <a href="@Model.Layout.LoginUrl" title="@Html.Translate("/footer/login")">@Html.Translate("/footer/login")</a>
+                        }
+                        else
+                        {
+                            <p>Login funktion inte tillgänglig</p>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

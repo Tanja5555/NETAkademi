@@ -1,0 +1,21 @@
+﻿@using EPiServer.Core
+@model NETAkademi.Models.Pages.SitePageData
+
+<div class="border">
+    @if (Model.HasTemplate())
+    {
+        <div class="border">
+            <img src="@Url.ContentUrl(Model.PageImage)" />
+            <a href="@Url.PageUrl(Model.LinkURL)">
+                <h2>@Model.Name</h2>
+                <p>@Html.PropertyFor(x => x.TeaserText)</p>
+            </a>
+        </div>
+    }
+    else
+    {
+        <h2>@Model.Name</h2>
+        <p>@Html.PropertyFor(x => x.TeaserText)</p>
+        <img src="@Url.ContentUrl(Model.PageImage)" />
+    }
+</div>

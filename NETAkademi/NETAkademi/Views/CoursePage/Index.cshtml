@@ -1,0 +1,185 @@
+﻿@using NETAkademi.Models.JsonUtils
+@using NETAkademi.Models.Pages
+
+@model NETAkademi.Models.ViewModels.CoursePageViewModel
+@{
+    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+}
+
+@{Html.RenderPartial("Breadcrumbs");}
+
+
+<div class="row">
+    <div class="col-md-8 columnBorder">
+        <h1 @Html.EditAttributes(x => x.CurrentPage.PageName)>
+            @Model.CurrentPage.PageName
+        </h1>
+        <p class="introduction" @Html.EditAttributes(x => x.CurrentPage.MetaDescription)>@Model.CurrentPage.MetaDescription</p>
+
+        @Html.PropertyFor(x => x.CurrentPage.MainBody)
+        <br />
+        <div>
+            <a class="ikon" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Förkunskaper
+            </a>
+            <div class="collapse" id="collapseExample">
+                <div class="well" @Html.EditAttributes(x => x.CurrentPage.Knowledge)>
+                    @Model.CurrentPage.Knowledge
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <div>
+            <a class="ikon" role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ämnesområden
+            </a>
+            <div class="collapse" id="collapseExample2">
+                <div class="well" @Html.EditAttributes(x => x.CurrentPage.SubjectAreas)>
+                    @Model.CurrentPage.SubjectAreas
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <div>
+            <a class="ikon" role="button" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Målgrupp
+            </a>
+            <div class="collapse" id="collapseExample3">
+                <div class="well" @Html.EditAttributes(x => x.CurrentPage.TargetGroup)>
+                    @Model.CurrentPage.TargetGroup
+                </div>
+            </div>
+        </div>
+        <br /><br />
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <input class="btn btn-default knapp2" type="submit" value="Boka">
+                <h3 class="panel-title">Boka Kursen, Boka din plats redan nu</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4 ">
+        <div class="panel panel-default">
+            <div class="panel-heading " id="pricebox">
+                <h3 class="panel-title">OM KURSEN</h3>
+            </div>
+            <div class="panel-body">
+                <h3>Pris: <span @Html.EditAttributes(x => x.CurrentPage.Price)>@Model.CurrentPage.Price</span>  kr</h3>
+                <p>exlusive moms</p>
+                <br />
+                <p>Längd: <span @Html.EditAttributes(x => x.CurrentPage.CourseLength)>@Model.CurrentPage.CourseLength</span> dagar</p>
+                <p>Kurskod: <span @Html.EditAttributes(x => x.CurrentPage.CourseCode)>@Model.CurrentPage.CourseCode</span></p>
+                <hr />
+                <p>Kompetenskort gäller på denna kurs</p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading ">
+                <h3 class="panel-title">BOKA KURSEN</h3>
+            </div>
+            <div class="panel-body">
+                <h4>Välj ort och kursstart</h4>
+
+                <form>
+                    <ul>
+                        @if (Model.ClassEvents != null)
+                            {
+                                foreach (var classevent in Model.ClassEvents)
+                                {
+                                    <li>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="@classevent.Id" checked>
+                                        @classevent.Location.Name
+
+                                       
+                                        @classevent.StartDate
+                                    </li>
+
+                                }
+                            }
+                    </ul>
+                </form>
+
+
+
+
+                @*<h4>11 April</h4>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        Stockholm
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                        Göteborg
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                        Malmö
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+                        Umeå
+                    </label>
+                </div>
+
+
+                <h4>26 April</h4>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        Stockholm
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                        Göteborg
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                        Malmö
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+                        Umeå
+                    </label>
+                </div>*@
+                <hr />
+                <h4>Intresseanmälan</h4>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputNamn1" placeholder="Förnamn och Efternamn">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" id="exampleInputTel1" placeholder="Telefonnr">
+                    </div>
+                    <div>
+                        <textarea class="form-control" rows="3" placeholder="Skriv in Övriga kommentarer eller frågor här"></textarea>
+                    </div>
+                    <br />
+                    <div>
+                        <input class="btn btn-default knapp1" type="submit" value="Skicka in formulär">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,73 @@
+﻿@model NETAkademi.Models.ViewModels.ListingCoursesBlockModel
+
+@*<h2 @Html.EditAttributes(x => x.Heading)>@Model.Heading</h2>*@
+
+<hr />
+@if (Model.Items != null)
+{
+    foreach (var item in Model.Items)
+    {
+        <div class="panel panel-default clearfix">
+            @*<h3>@Html.PageLink(item)</h3>*@
+            <div class="col-md-12 pull-left">
+                <div class="col-md-6 panel-heading">
+                    <div class="glyphicon glyphicon-plus panel-title">
+                        
+                        <a data-toggle="collapse" href="#collapse1" aria-expanded="true" aria-controls="collapseExample">
+                        @Html.PageLink(item)</a>
+                    </div>
+
+                </div>
+
+                <div class="col-md-2">
+                    @item.CourseLength dagar
+                </div>
+
+                <div class="col-md-2">
+                   @item.Price kr
+                </div>
+
+                <div class="col-md-2">
+                    Kod kurs: @item.CourseCode
+
+                </div>              
+            </div>
+
+        </div>
+    }
+}
+
+@if (Model.OnlineItems != null)
+{
+    foreach (var onlineitem in Model.OnlineItems)
+    {
+        <div class="panel panel-default clearfix">
+            @*<h3>@Html.PageLink(item)</h3>*@
+            <div class="col-md-12 pull-left">
+                <div class="col-md-6 panel-heading">
+                    <div class="glyphicon glyphicon-plus panel-title">
+
+                        <a data-toggle="collapse" href="#collapse1" aria-expanded="true" aria-controls="collapseExample">
+                            @Html.PageLink(onlineitem)
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="col-md-2">
+                    @onlineitem.Duration days
+                </div>
+
+                <div class="col-md-2">
+                    @onlineitem.Level
+                </div>
+
+                <div class="col-md-2">
+                    @onlineitem.ReleaseDate
+
+                </div>
+            </div>
+
+        </div>
+    }
+}

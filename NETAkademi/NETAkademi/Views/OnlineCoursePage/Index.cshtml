@@ -1,0 +1,121 @@
+﻿@using NETAkademi.Models.Pages
+
+@model NETAkademi.Models.ViewModels.DefaultPageViewModel<OnlineCoursePage>
+@{
+    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+}
+
+@{Html.RenderPartial("Breadcrumbs");}
+
+<div class="row">
+    <div class="col-md-8 columnBorder">
+        <h1 @Html.EditAttributes(x => x.CurrentPage.PageName)>@Model.CurrentPage.PageName</h1>
+        <p> @Model.CurrentPage.Author</p>
+        <p @Html.EditAttributes(x => x.CurrentPage.MetaDescription)>@Model.CurrentPage.MetaDescription</p>
+        <hr />
+        <div class="row">
+            <div class="col-xs-1">
+                <a class="ikon" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="col-md-10">
+                <span @Html.EditAttributes(x => x.CurrentPage.CourseTitle1)>@Model.CurrentPage.CourseTitle1</span>
+            </div>
+           
+        </div>
+        <div class="collapse" id="collapseExample">
+            <div class="well" @Html.EditAttributes(x => x.CurrentPage.CourseDescription1)>
+                @Model.CurrentPage.CourseDescription1
+            </div>
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="col-xs-1">
+                <a class="ikon" role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="col-md-10">
+                <span @Html.EditAttributes(x => x.CurrentPage.CourseTitle2)>@Model.CurrentPage.CourseTitle2</span>
+            </div>
+
+        </div>
+        <div class="collapse" id="collapseExample2">
+            <div class="well" @Html.EditAttributes(x => x.CurrentPage.CourseDescription2)>
+                @Model.CurrentPage.CourseDescription2
+            </div>
+        </div>
+        <hr />
+        
+        <div class="row">
+            <div class="col-xs-1">
+                <a class="ikon" role="button" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="col-md-10">
+                <span @Html.EditAttributes(x => x.CurrentPage.CourseTitle3)>@Model.CurrentPage.CourseTitle3</span>
+            </div>
+
+        </div>
+        <div class="collapse" id="collapseExample3">
+            <div class="well" @Html.EditAttributes(x => x.CurrentPage.CourseDescription3)>
+                @Model.CurrentPage.CourseDescription3
+            </div>
+        </div>
+        <hr />
+    </div>
+    <div class="col-md-4 columnBorder">
+        <h3>Course info</h3>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                Nivå
+            </div>
+            <div class="col-md-8">
+                <p @Html.EditAttributes(x => x.CurrentPage.Level)>@Model.CurrentPage.Level</p>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                Varaktighet
+            </div>
+            <div class="col-md-8">
+                <p @Html.EditAttributes(x => x.CurrentPage.Duration)>@Model.CurrentPage.Duration</p>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                Publicerad
+            </div>
+            <div class="col-md-8">
+                <p @Html.EditAttributes(x => x.CurrentPage.ReleaseDate)>@Model.CurrentPage.ReleaseDate</p>
+            </div>
+        </div>
+        <hr />
+
+        <h3>Course authors</h3>
+        <hr />
+        <div class="row">
+            <div class="col-md-4" @Html.EditAttributes(x => x.CurrentPage.Image)>
+                <img class="img-circle teaserPic" src="@Url.ContentUrl(Model.CurrentPage.Image)" />
+            </div>
+            <div class="col-md-8">
+                <p @Html.EditAttributes(x => x.CurrentPage.Author)>@Model.CurrentPage.Author</p>
+            </div>
+        </div>
+       <br />
+        <div class="row">
+            <div class="col-md-12">
+                @Html.PropertyFor(x => x.CurrentPage.MainBody)
+            </div>
+        </div>
+       
+        
+    </div>
+</div>
+

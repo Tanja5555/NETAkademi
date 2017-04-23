@@ -1,0 +1,39 @@
+﻿@model NETAkademi.Models.ViewModels.SearchPageViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{Html.RenderPartial("Breadcrumbs");}
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <input id="searchBarResult" type="text" results="5" tabindex="1" name="q" value="@Model.SearchQuery" />
+    <input type="submit" tabindex="2" class="btn" value="Search"/>
+}
+<br/>
+
+@if (Model.Results != null)
+{
+    <div class="col-md-8 grayHead">
+        <h2>Search result</h2>
+        <p>
+            Your search for <i>@Model.SearchQuery resulted in @Model.Results.Count() hits.</i>
+        </p>
+    </div>
+    <br/>
+    <div class="col-md-6">
+        <div class="listResult">
+            <ul>
+                @foreach (var item in Model.Results)
+                {
+                    
+                   <li>
+                        <h4><a href="@item.Url">@Html.Raw(@item.Title)</a></h4>
+                        @Html.Raw(@item.Excerpt)
+                   </li>
+                }
+            </ul>
+        </div>
+    </div>
+}

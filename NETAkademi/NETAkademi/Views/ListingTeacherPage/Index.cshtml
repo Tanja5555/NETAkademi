@@ -1,0 +1,23 @@
+﻿@model NETAkademi.Models.ViewModels.DefaultPageViewModel<NETAkademi.Models.Pages.ListingTeacherPage>
+
+
+@{
+    
+    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+}
+
+@{Html.RenderPartial("Breadcrumbs");}
+
+<div class="container">
+    <div class="col-md-12 panel-default">
+
+            <div class="col-md-12">
+                <div class="clearfix">
+                    <h4 @Html.EditAttributes(x => x.CurrentPage.MetaDescription)>@Model.CurrentPage.MetaDescription</h4>
+                    <br/>
+                    @Html.PropertyFor(m => m.CurrentPage.MainListing)
+                    @Html.PropertyFor(m => m.CurrentPage.MapBlock)
+                </div>
+            </div>
+     </div>
+</div>

@@ -1,0 +1,54 @@
+﻿
+@using NETAkademi.Models.Pages
+
+@model NETAkademi.Models.ViewModels.DefaultPageViewModel<TeacherPage>
+
+@{
+   
+    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+}
+
+@{Html.RenderPartial("Breadcrumbs");}
+
+<div class="container conBody">
+    <div class="page-header">
+        <h1>Välkommen till <span @Model.CurrentPage.PageName>@Model.CurrentPage.PageName</span>s profil</h1>
+    </div>
+
+    <div class="col-md-10 teachBorder2">
+        <div class="col-xs-6 col-md-4">
+            <a href="#" class="thumbnail">
+                <img class="imgTeach2" @Html.EditAttributes(x => x.CurrentPage.TeacherImage)><img src="@Url.ContentUrl(Model.CurrentPage.TeacherImage)" />                
+            </a>
+        </div>
+
+        <div class="col-md-6">
+            <h4>@Model.CurrentPage.PageName</h4>
+            <br />
+
+            <h4>Ämne: @Html.PropertyFor(m => m.CurrentPage.CourseSubject) </h4>
+            <br />
+
+            <h4>Telefon: @Html.PropertyFor(m => m.CurrentPage.TeacherTelephone) </h4>
+            <br />
+
+            <h4>Mail: @Html.PropertyFor(m => m.CurrentPage.TeacherEmail) </h4>
+            <br />
+
+           
+            <h4><a href="@Url.ContentUrl(Model.CurrentPage.LinkedinLink)">Se LinkedIn</a></h4>
+
+            <br /> <br />
+
+
+    
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Biografi</button>
+            <div id="demo" class="collapse out">
+                <h5>@Html.PropertyFor(m => m.CurrentPage.Biography) </h5>
+            </div>
+            
+        </div>
+        <hr />
+    </div>
+
+</div>

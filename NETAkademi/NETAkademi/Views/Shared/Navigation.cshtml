@@ -1,0 +1,67 @@
+﻿@using NETAkademi.Helpers
+@using EPiServer.Core
+@using EPiServer
+
+@using EPiServer.Editor
+@using EPiServer.ServiceLocation
+@using EPiServer.Web.Routing
+@using NETAkademi.Models.Pages
+@using NETAkademi.Models.ViewModels
+
+
+@model IPageViewModel<SitePageData>
+
+@{
+    var pageRouteHelper = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<EPiServer.Web.Routing.IPageRouteHelper>();
+
+}
+<div class="row customMenu">
+    <nav class="navbar navbar-default transparant">
+        <div class="container-fluid">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#important-id-for-collapsing" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="col-md-3">
+                <a href="@Model.Layout.LogotypeLinkUrl" title="@Model.Layout.Logotype.Title">
+                    @Html.PropertyFor(x => x.Layout.Logotype)
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="#important-id-for-collapsing">
+                <div class="col-md-9">
+                    <ul class="nav navbar-nav">
+                        <li class="@(pageRouteHelper.ContentLink.CompareToIgnoreWorkID(ContentReference.StartPage) ? "active" : null )">
+                            @Html.PageLink(ContentReference.StartPage)
+                        </li>
+                        @Html.MenuList(ContentReference.StartPage,
+                            @<li class="@(item.Selected ? "active" : null)">
+                                @Html.PageLink(item.Page)
+                            </li>)
+                    </ul>
+
+
+                    <div class="navbar-search pull-right">
+                        <form method="get" action="@Model.SearchPageActionUrl" class="navigationStartPage">
+                            <input id="textboxStartPage" type="search" name="q" results="5" placeholder="@Html.Translate("/mainnavigation/search")" />
+                            <button type="submit" value="GO" class="btn btn-default searchButton">
+                                @*<span class="glyphicon glyphicon-search"></span>*@
+                                OK
+                            </button>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+@*@action = UrlResolver.Current.GetUrl(DataFactory.Instance.Get<NETAkademi.Models.Pages.StartPage>
+    (ContentReference.StartPage).SearchPageLink)*@
+
+@*@using (Html.BeginForm(null, null, PageEditing.PageIsInEditMode ? FormMethod.Post : FormMethod.Get, new { @action = Model.Layout.SearchActionUrl }))*@

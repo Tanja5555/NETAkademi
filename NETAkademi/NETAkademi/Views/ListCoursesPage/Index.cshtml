@@ -1,0 +1,48 @@
+﻿@model NETAkademi.Models.ViewModels.DefaultPageViewModel<NETAkademi.Models.Pages.ListCoursesPage>
+
+@{
+   
+    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+}
+
+@{Html.RenderPartial("Breadcrumbs");}
+
+<div class="row">
+    <div class="col-md-8 panel-default">
+        <div class="panel-heading" id="subject">
+            <h1 class="panel-title" id="subject">
+                @Html.PropertyFor(m => m.CurrentPage.CourseSubject)
+            </h1>
+        </div>
+        <div class="panel-body content1">
+            <p class="introduction">
+                @Html.PropertyFor(m => m.CurrentPage.CourseSubjectDescription)
+            </p>
+            <br />
+        </div>
+    </div>
+
+    <div class="col-md-4 ">
+
+        @Html.PropertyFor(x => x.CurrentPage.RighthandContentArea)
+
+    </div>  
+    <br/>
+</div>  
+
+<br />
+
+<div class="row">
+    <div class="col-md-12 panel-default">
+        <div class="panel-heading" id="subject">
+            <h2 class="panel-title" id="subject">Kurser inom <span @Html.EditAttributes(x => x.CurrentPage.CourseSubject)>@Model.CurrentPage.CourseSubject</span></h2>
+        </div>
+        <div class="col-md-12" id="content">
+            <div class="clearfix">
+                @*@Html.PropertyFor(m => m.CurrentPage.MainBody)*@
+                @Html.PropertyFor(m => m.CurrentPage.MainListing)
+            </div>
+        </div>
+    </div>
+</div>
+

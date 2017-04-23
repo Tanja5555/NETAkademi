@@ -1,0 +1,27 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model NETAkademi.Models.ViewModels.DefaultPageViewModel<NETAkademi.Models.Pages.StandardPage>
+
+@{
+
+    Layout = "~/Views/Shared/_LeftNavigation.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12 clearfix">
+        <h1 @Html.EditAttributes(x => x.CurrentPage.Heading)>
+            @(Model.CurrentPage.Heading ?? Model.CurrentPage.Name)
+        </h1>
+
+        <p>@Html.PropertyFor(x => x.CurrentPage.MainBody)</p>
+        <div>
+            @Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { CssClass = "border" })
+        </div>
+    </div>
+
+    @*<div class="col-md-3">
+        @Html.PropertyFor(x => x.CurrentPage.RighthandContentArea, new { CssClass = "border" })
+</div>*@
+</div>

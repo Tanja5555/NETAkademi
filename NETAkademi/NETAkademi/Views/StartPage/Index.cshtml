@@ -1,0 +1,51 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model NETAkademi.Models.ViewModels.DefaultPageViewModel<NETAkademi.Models.Pages.StartPage>
+
+
+@*<h1 @Html.EditAttributes(x => x.CurrentPage.Heading)>
+        @(Model.CurrentPage.Heading ?? Model.CurrentPage.PageName)
+    </h1>
+*@
+<br />
+<div class="row">
+    <div class="col-md-8">
+        
+        @Html.PropertyFor(x => x.CurrentPage.SlideShowContentArea, new { CssClass = "border", tag = "col-md-8" })
+       
+    </div>
+    <div class="col-md-4">
+       @Html.PropertyFor(x => x.CurrentPage.Teaser)
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        @Html.PropertyFor(m => m.CurrentPage.AdvertisementContentArea, new { tag = "col-md-12" })
+    </div>
+</div>
+<br /><br/>
+<div class="row">
+    <div class="col-md-3">
+        @Html.PropertyFor(x => x.CurrentPage.CompanyQuote1)
+    </div>
+    <div class="col-md-3">
+        @Html.PropertyFor(x => x.CurrentPage.CompanyQuote2)
+    </div>
+    <div class="col-md-3">
+        @Html.PropertyFor(x => x.CurrentPage.CompanyQuote3)
+    </div>
+    <div class="col-md-3">
+        @Html.PropertyFor(x => x.CurrentPage.CompanyQuote4)
+    </div>
+</div>
+<hr/>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        @Html.PropertyFor(m => m.CurrentPage.PartnerContentArea, new { tag = "col-md-12" })
+    </div>
+</div>
+<br />
+

@@ -1,0 +1,59 @@
+﻿@using EPiServer.Core
+@using NETAkademi.Models.Pages
+@using EPiServer.Web.Mvc.Html
+
+
+@model NETAkademi.Models.ViewModels.DefaultPageViewModel<CourseBasePage>
+
+
+@{
+
+    Layout = "~/Views/Shared/Layouts/_TwoPlusOne.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-8">
+
+        <h1 @Html.EditAttributes(x => x.CurrentPage.PageName)>@Model.CurrentPage.PageName</h1>
+        @*<p class="introduction" @Html.EditAttributes(x => x.CurrentPage.MetaDescription)>@Model.CurrentPage.MetaDescription</p>*@
+
+        <br/><br/>
+
+        <div class="row">
+            <div class="span8 clearfix">
+                @Html.PropertyFor(x => x.CurrentPage.MainBody)
+            </div>
+            <br /><br />
+        </div>
+
+        
+
+            @section RelatedContent
+{
+                <div class="col-md-4" @Html.EditAttributes(x => x.CurrentPage.PageImage)>
+                    <img src="@Url.ContentUrl(Model.CurrentPage.PageImage)" />
+                </div>
+
+        <br /><br />
+
+                <div class="col-md-4">
+                    @*<h2 @Html.EditAttributes(x => x.CurrentPage.PageName)>
+                        @Model.CurrentPage.PageName
+                    </h2>*@
+                    <p>@Html.PropertyFor(x => x.CurrentPage.UniqueSellingPoints)</p>
+                </div>
+            }
+        <br /><br />
+    </div>
+  
+        <div class="col-md-8">
+
+            @Html.PropertyFor(x => x.CurrentPage.CourseBaseMainContentArea)
+        </div>
+  
+  
+
+
+</div>
